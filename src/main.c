@@ -3,6 +3,10 @@
 #include <string.h>
 #include <Windows.h>
 
+#ifdef _PRIV_ICO_BUILD
+#include "resource.h"
+#endif
+
 #define JAVA_URL "http://java.com/en/download/index.jsp"
 
 #pragma comment(lib, "user32.lib")
@@ -63,7 +67,7 @@ int Launch(int arch, int java)
 	BOOL result = FALSE;
 	int opt = 0;
 	DWORD err = 0;
-	char *cmd[2]= {"-d64 -Xms1024M -Xmx2048M -jar p:\\tmp\\mc132\\minecraft.jar","-Xincgc -Xmx1024M -jar p:\tmp\mc132\minecraft.jar"};
+	char *cmd[2]= {"-d64 -Xms1024M -Xmx2048M -jar minecraft.jar","-Xincgc -Xmx1024M -jar minecraft.jar"};
 	STARTUPINFO si;
 	ZeroMemory(&si, sizeof(si));
 	if (arch == 64 && java == 64)
